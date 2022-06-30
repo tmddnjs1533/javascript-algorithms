@@ -1,72 +1,54 @@
-# Linked List
+# 링크드 리스트
 
-_Read this in other languages:_
-[_简体中文_](README.zh-CN.md),
-[_Русский_](README.ru-RU.md),
-[_日本語_](README.ja-JP.md),
-[_Português_](README.pt-BR.md),
-[_한국어_](README.ko-KR.md),
-[_Español_](README.es-ES.md),
-[_Turkish_](README.tr-TR.md),
+컴퓨터과학에서, **링크드 리스트**는 데이터 요소의 선형 집합이며, 이 집합에서 *논리적 저장 순서*는 *메모리의 물리적 저장 순서*와 **일치하지 않**습니다. 그 대신, 각각의 원소들은 자기 자신 다음의 원소를 가리킵니다. **링크드 리스트**는 순서를 표현하는 노드들의 집합으로 이루어져 있습니다. 간단하게, 각각의 노드들은 데이터와 다음 순서의 노드를 가리키는 레퍼런스로 이루어져 있습니다. (링크라고 부릅니다.) 이 자료구조는 순회하는 동안 순서에 상관없이 효율적인 삽입이나 삭제가 가능합니다. 더 복잡한 변형은 추가적인 링크를 더해, 임의의 원소 참조로부터 효율적인 삽입과 삭제를 가능하게 합니다. 링크드 리스트의 단점은 접근 시간이 선형이라는 것이고, 병렬처리도 하지 못합니다. 임의 접근처럼 빠른 접근은 불가능합니다. 링크드 리스트에 비해 배열이 더 나은 캐시 지역성을 가지고 있습니다.
 
-In computer science, a **linked list** is a linear collection
-of data elements, in which linear order is not given by
-their physical placement in memory. Instead, each
-element points to the next. It is a data structure
-consisting of a group of nodes which together represent
-a sequence. Under the simplest form, each node is
-composed of data and a reference (in other words,
-a link) to the next node in the sequence. This structure
-allows for efficient insertion or removal of elements
-from any position in the sequence during iteration.
-More complex variants add additional links, allowing
-efficient insertion or removal from arbitrary element
-references. A drawback of linked lists is that access
-time is linear (and difficult to pipeline). Faster
-access, such as random access, is not feasible. Arrays
-have better cache locality as compared to linked lists.
++추가 : 링크드 리스트는 head 정보와 tail 정보를 가지고 있음.
+* [연결 리스트 요소](./LinkedListNode.js)
+* [연결 리스트](./LinkedList.js)
 
-![Linked List](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="링크드 리스트" style="background-color: white;">
 
-## Pseudocode for Basic Operations
+## 기본 연산에 대한 수도코드
 
-### Insert
+### 삽입
+
+
+```text
+Prepend(value)
+ Pre: 리스트에 추가할 값
+ Post: 리스트의 맨 앞에 있는 값
+ n ← node(value) : 새 노드 생성
+ n.next ← head : 새 노드의 next는 기존 선두(선두가 없으면 null)
+ head ← n : 새 노드는 리스트의 새로운 선두가 됨.
+ if tail = ø : 꼬리가 없다면
+   tail ← n : 새 노드는 리스트의 선두이자 꼬리가 됨.
+ end
+end Prepend
+```
 
 ```text
 Add(value)
-  Pre: value is the value to add to the list
-  Post: value has been placed at the tail of the list
-  n ← node(value)
-  if head = ø
+  Pre: 리스트에 추가할 값
+  Post: 리스트의 맨 마지막에 있는 값
+  n ← node(value) : 새 노드 생성
+  if head = ø : 선두가 없다면 새 노드는 리스트의 선두이자 꼬리가 됨.
     head ← n
     tail ← n
-  else
+  else : 꼬리의 다음 노드는 새 노드가 되고, 새 꼬리는 새 노드가 됨.
     tail.next ← n
     tail ← n
   end if
 end Add
 ```
 
-```text
-Prepend(value)
- Pre: value is the value to add to the list
- Post: value has been placed at the head of the list
- n ← node(value)
- n.next ← head
- head ← n
- if tail = ø
-   tail ← n
- end
-end Prepend
-```
-
-### Search
+### 탐색
 
 ```text
 Contains(head, value)
-  Pre: head is the head node in the list
-       value is the value to search for
-  Post: the item is either in the linked list, true; otherwise false
+  Pre: head는 리스트에서 맨 앞 노드
+       value는 찾고자 하는 값
+  Post: 항목이 링크드 리스트에 있으면 true;
+        없으면 false
   n ← head
   while n != ø and n.value != value
     n ← n.next
@@ -78,13 +60,14 @@ Contains(head, value)
 end Contains
 ```
 
-### Delete
+### 삭제
 
 ```text
 Remove(head, value)
-  Pre: head is the head node in the list
-       value is the value to remove from the list
-  Post: value is removed from the list, true, otherwise false
+  Pre: head는 리스트에서 맨 앞 노드
+       value는 삭제하고자 하는 값
+  Post: 항목이 링크드 리스트에서 삭제되면 true;
+        없으면 false
   if head = ø
     return false
   end if
@@ -104,22 +87,20 @@ Remove(head, value)
   if n.next != ø
     if n.next = tail
       tail ← n
-      tail.next = null
-    else
-      n.next ← n.next.next
     end if
+    n.next ← n.next.next
     return true
   end if
   return false
 end Remove
 ```
 
-### Traverse
+### 순회
 
 ```text
 Traverse(head)
-  Pre: head is the head node in the list
-  Post: the items in the list have been traversed
+  Pre: head는 리스트에서 맨 앞 노드
+  Post: 순회된 항목들
   n ← head
   while n != ø
     yield n.value
@@ -128,12 +109,12 @@ Traverse(head)
 end Traverse
 ```
 
-### Traverse in Reverse
+### 역순회
 
 ```text
 ReverseTraversal(head, tail)
-  Pre: head and tail belong to the same list
-  Post: the items in the list have been traversed in reverse order
+  Pre: 같은 리스트에 들어 있는 맨 앞, 맨 뒤 노드
+  Post: 역순회된 항목들
   if tail != ø
     curr ← tail
     while curr != head
@@ -149,19 +130,19 @@ ReverseTraversal(head, tail)
 end ReverseTraversal
 ```
 
-## Complexities
+## 복잡도
 
-### Time Complexity
+### 시간 복잡도
 
-| Access    | Search    | Insertion | Deletion  |
-| :-------: | :-------: | :-------: | :-------: |
-| O(n)      | O(n)      | O(1)      | O(n)      |
+| 접근 | 탐색 | 삽입 | 삭제 |
+| :--: | :--: | :--: | :--: |
+| O(n) | O(n) | O(1) | O(n) |
 
-### Space Complexity
+### 공간 복잡도
 
 O(n)
 
-## References
+## 참조
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
 - [YouTube](https://www.youtube.com/watch?v=njTh_OwMljA&index=2&t=1s&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)

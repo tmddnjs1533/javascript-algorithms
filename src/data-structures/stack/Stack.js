@@ -2,6 +2,10 @@ import LinkedList from '../linked-list/LinkedList';
 
 export default class Stack {
   constructor() {
+    // 링크드 리스트와 스택 두 구조가 상당히 유사하기 때문에 링크드 리스트를 기반으로
+    // 스택을 구현합니다.
+    // 링크드 리스트의 prepend/deleteHead 작업과 스택의 push/pop 작업을
+    // 비교하십시오.
     // We're going to implement Stack based on LinkedList since these
     // structures are quite similar. Compare push/pop operations of the Stack
     // with prepend/deleteHead operations of LinkedList.

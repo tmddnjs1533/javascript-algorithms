@@ -1,34 +1,36 @@
-# Lista Enlazada (Linked List)
+# Linked List
 
-_Lee este artículo en otros idiomas:_
+_Read this in other languages:_
 [_简体中文_](README.zh-CN.md),
 [_Русский_](README.ru-RU.md),
 [_日本語_](README.ja-JP.md),
-[_Português_](README.pt-BR.md)
-[_English_](README.md)
+[_Português_](README.pt-BR.md),
+[_한국어_](README.ko-KR.md),
+[_Español_](README.es-ES.md),
+[_Turkish_](README.tr-TR.md),
 
-En ciencias de la computaciòn una **lista enlazada** es una  coleccion linear 
-de elementos de datos, en los cuales el orden linear no es dado por
-su posciòn fisica en memoria. En cambio, cada 
-elemento señala al siguiente. Es una estructura de datos
-que consiste en un grupo de nodos los cuales juntos representan
-una secuencia. En su forma más sencilla, cada nodo está
-compuesto de datos y una referencia (en otras palabras,
-un enlace) al siguiente nodo en la secuencia. Esta estructura
-permite la inserción o eliminación de elementos
-desde cualquier posición en la secuencia durante la iteración.
-Las variantes más complejas agregan enlaces adicionales, permitiendo
-una eficiente inserción o eliminación desde referencias arbitrarias
-del elemento. Una desventaja de las listas lazadas es que el tiempo de
-acceso es lineal (y difícil de canalizar). Un acceso
-más rápido, como un acceso aleatorio, no es factible. Los arreglos
-tienen una mejor locazion en caché comparados con las listas lazadas.
+In computer science, a **linked list** is a linear collection
+of data elements, in which linear order is not given by
+their physical placement in memory. Instead, each
+element points to the next. It is a data structure
+consisting of a group of nodes which together represent
+a sequence. Under the simplest form, each node is
+composed of data and a reference (in other words,
+a link) to the next node in the sequence. This structure
+allows for efficient insertion or removal of elements
+from any position in the sequence during iteration.
+More complex variants add additional links, allowing
+efficient insertion or removal from arbitrary element
+references. A drawback of linked lists is that access
+time is linear (and difficult to pipeline). Faster
+access, such as random access, is not feasible. Arrays
+have better cache locality as compared to linked lists.
 
 ![Linked List](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
 
-## Pseudocódigo para operaciones básicas
+## Pseudocode for Basic Operations
 
-### Insertar
+### Insert
 
 ```text
 Add(value)
@@ -58,7 +60,7 @@ Prepend(value)
 end Prepend
 ```
 
-### Buscar
+### Search
 
 ```text
 Contains(head, value)
@@ -76,7 +78,7 @@ Contains(head, value)
 end Contains
 ```
 
-### Borrar
+### Delete
 
 ```text
 Remove(head, value)
@@ -102,15 +104,17 @@ Remove(head, value)
   if n.next != ø
     if n.next = tail
       tail ← n
+      tail.next = null
+    else
+      n.next ← n.next.next
     end if
-    n.next ← n.next.next
     return true
   end if
   return false
 end Remove
 ```
 
-### Atrevesar
+### Traverse
 
 ```text
 Traverse(head)
@@ -124,7 +128,7 @@ Traverse(head)
 end Traverse
 ```
 
-### Atravesar en Reversa
+### Traverse in Reverse
 
 ```text
 ReverseTraversal(head, tail)
@@ -145,19 +149,19 @@ ReverseTraversal(head, tail)
 end ReverseTraversal
 ```
 
-## Complejidades
+## Complexities
 
-### Complejidad de Tiempo
+### Time Complexity
 
-| Acceso | Búsqueda | Inserción | Eliminación |
-| :----: | :------: | :-------: | :---------: |
-|  O(n)  |   O(n)   |   O(1)    |    O(n)     |
+| Access    | Search    | Insertion | Deletion  |
+| :-------: | :-------: | :-------: | :-------: |
+| O(n)      | O(n)      | O(1)      | O(n)      |
 
-### Complejidad Espacial
+### Space Complexity
 
 O(n)
 
-## Referencias
+## References
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
 - [YouTube](https://www.youtube.com/watch?v=njTh_OwMljA&index=2&t=1s&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)

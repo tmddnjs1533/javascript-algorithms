@@ -16,6 +16,7 @@ export default class Stack {
    * @return {boolean}
    */
   isEmpty() {
+    // 링크드 리스트에 헤드가 없으면 스택이 비어 있습니다.
     // The stack is empty if its linked list doesn't have a head.
     return !this.linkedList.head;
   }
@@ -25,10 +26,12 @@ export default class Stack {
    */
   peek() {
     if (this.isEmpty()) {
+      // 링크된 목록이 비어 있으면 엿볼 수 있는 항목이 없습니다.
       // If the linked list is empty then there is nothing to peek from.
       return null;
     }
 
+    // 링크된 목록의 시작부터 값을 삭제하지 않고 읽기만 하면 됩니다.
     // Just read the value from the start of linked list without deleting it.
     return this.linkedList.head.value;
   }
@@ -37,6 +40,7 @@ export default class Stack {
    * @param {*} value
    */
   push(value) {
+    // 푸시(push)는 스택의 맨 위에 값을 놓는 것을 의미합니다. 따라서 링크된 목록의 시작 부분에 새 값을 추가합니다.
     // Pushing means to lay the value on top of the stack. Therefore let's just add
     // the new value at the start of the linked list.
     this.linkedList.prepend(value);

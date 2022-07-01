@@ -16,11 +16,11 @@
 
 `B` - 입문자, `A` - 숙련자
 
-- [X]  `B` [연결 리스트](src/data-structures/linked-list/README.md) 
+- [X]  `B` [연결 리스트](src/data-structures/linked-list/README.md)
 - [X] `B` [이중 연결 리스트](src/data-structures/doubly-linked-list/README.md)
 - [X] `B` [큐](src/data-structures/queue/README.md)
-- [ ] `B` [스택](src/data-structures/stack/README.md)
-- [ ] `B` [해시 테이블](src/data-structures/hash-table/README.md)
+- [X] `B` [스택](src/data-structures/stack/README.md)
+- [X] `B` [해시 테이블](src/data-structures/hash-table/README.origin.md)
 - [ ] `B` [힙](src/data-structures/heap)
 - [ ] `B` [우선순위 큐](src/data-structures/priority-queue)
 - [ ] `A` [트라이](src/data-structures/trie)

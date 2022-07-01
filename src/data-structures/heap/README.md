@@ -1,33 +1,19 @@
-# Heap (data-structure)
+# 힙 (자료구조)
 
-_Read this in other languages:_
-[_简体中文_](README.zh-CN.md),
-[_Русский_](README.ru-RU.md),
-[_日本語_](README.ja-JP.md),
-[_Français_](README.fr-FR.md),
-[_Português_](README.pt-BR.md),
-[_Türkçe_](README.tr-TR.md),
-[_한국어_](README.ko-KR.md)
+컴퓨터 과학에서의 **힙**은 아래에 설명된 힙 속성을 만족하는 전문화된 트리 기반 데이터구조입니다.
 
-In computer science, a **heap** is a specialized tree-based
-data structure that satisfies the heap property described
-below.
-
-In a *min heap*, if `P` is a parent node of `C`, then the
-key (the value) of `P` is less than or equal to the
-key of `C`.
+*최소 힙*에서 `P`가 `C`의 상위 노드라면 `P`의 키(값)는 `C`의 키보다 작거나 같습니다.
 
 ![MinHeap](https://upload.wikimedia.org/wikipedia/commons/6/69/Min-heap.png)
 
-In a *max heap*, the key of `P` is greater than or equal
-to the key of `C`
+*최대 힙*에서 `P`의 키는 `C`의 키보다 크거나 같습니다.
 
 ![Heap](https://upload.wikimedia.org/wikipedia/commons/3/38/Max-Heap.svg)
 
-The node at the "top" of the heap with no parents is
-called the root node.
+상위 노드가 없는 힙의 "상단"에 있는 노드를 루트 노드라고 합니다.
 
-## References
+## 참조
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Heap_(data_structure))
+- [Wikipedia](<https://en.wikipedia.org/wiki/Heap_(data_structure)>)
 - [YouTube](https://www.youtube.com/watch?v=t0Cq6tVNRBA&index=5&t=0s&list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)
+

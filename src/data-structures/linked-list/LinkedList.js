@@ -57,7 +57,7 @@ export default class LinkedList {
 
   /**
    * @param {*} value
-   * @param {number} index
+   * @param {number} rawIndex
    * @return {LinkedList}
    */
   insert(value, rawIndex) {
